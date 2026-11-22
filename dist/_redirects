@@ -1,1 +1,8 @@
-/* /index.html 200
+# SPA fallbacks for the site's fixed routes.
+# Wildcard fallback rules are deliberately avoided: a destination pointing at
+# the site index normalises back to the root, which a wildcard matches again.
+/work /index.html 200
+/services /index.html 200
+/process /index.html 200
+/faq /index.html 200
+/contact /index.html 200
