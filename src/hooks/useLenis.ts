@@ -1,12 +1,17 @@
 import Lenis from 'lenis'
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import { gsap, ScrollTrigger } from '../lib/gsap'
 
 /**
  * Smooth scrolling, driven by the GSAP ticker so ScrollTrigger and Lenis stay
  * in lockstep. Disabled entirely when the visitor prefers reduced motion.
+ *
+ * Returns a ref to the active instance so navigation can jump to the top
+ * immediately without fighting the smooth-scroll interpolation.
  */
 export function useLenis() {
+  const lenisRef = useRef<Lenis | null>(null)
+
   useEffect(() => {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       return
@@ -19,6 +24,8 @@ export function useLenis() {
       autoToggle: true,
     })
 
+    lenisRef.current = lenis
+
     const onScroll = () => ScrollTrigger.update()
     const raf = (time: number) => lenis.raf(time * 1000)
 
@@ -30,9 +37,12 @@ export function useLenis() {
     document.fonts?.ready.then(() => ScrollTrigger.refresh())
 
     return () => {
+      lenisRef.current = null
       lenis.off('scroll', onScroll)
       gsap.ticker.remove(raf)
       lenis.destroy()
     }
   }, [])
+
+  return lenisRef
 }

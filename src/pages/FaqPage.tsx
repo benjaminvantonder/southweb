@@ -8,11 +8,11 @@ export function FaqPage() {
     <>
       <PageHero
         eyebrow="(06) FAQ"
-        title="Hosting questions, answered plainly."
-        lede="Cloudflare, edge networks, migrations, security and support — the questions every South African business should ask before signing off on a host."
+        title="Questions, answered plainly."
+        lede="What we build, what it costs, how the debut sale works and what hosting includes — straight answers before you commit."
         image="/images/faq-support.jpg"
         imageAlt="Help desk supporting a website owner with hosting questions"
-        imageCaption="Support and hosting questions"
+        imageCaption="Pricing and hosting questions"
       />
 
       <FaqSection faqs={FAQS} />

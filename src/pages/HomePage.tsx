@@ -1,24 +1,29 @@
 import { Link } from 'react-router-dom'
-import { Palette, ShoppingBag, ShieldCheck } from 'lucide-react'
+import { Globe2, HeartHandshake, RefreshCw, Server } from 'lucide-react'
 import { Hero } from '../components/Hero'
 import { Ribbon } from '../components/Ribbon'
 import { WhySection } from '../components/WhySection'
 import { CTASection } from '../components/CTASection'
-import { SERVICES, WORK, PROCESS, TESTIMONIALS } from '../lib/site'
+import { SERVICES, WORK, PROCESS, TESTIMONIALS, SALE, formatRand, salePrice } from '../lib/site'
+
+const serviceIcons = {
+  build: Globe2,
+  rebuild: RefreshCw,
+  nonprofit: HeartHandshake,
+  hosting: Server,
+}
 
 const tickerItems = [
   'Cloudflare hosting',
   'Local support',
   'Free SSL',
   'Global edge',
-  'Daily backups',
-  'No latency tax',
-  'One team',
+  'Once-off builds',
+  'R300/mo hosting',
+  'Debut sale · 50% off',
 ]
 
 export function HomePage() {
-  const featuredServices = SERVICES.slice(0, 3)
-
   return (
     <>
       <Hero />
@@ -33,32 +38,43 @@ export function HomePage() {
 
       <section className="section relative z-10 bg-cream">
         <div className="shell">
-          <div className="grid items-center gap-12 lg:grid-cols-[0.9fr_1.1fr]">
+          <div className="grid items-start gap-12 lg:grid-cols-[0.9fr_1.1fr]">
             <div className="max-w-[620px]">
-              <p className="mono-label mb-5 text-orange-deep">(03) Services</p>
+              <p className="mono-label mb-5 text-orange-deep">(03) Services &amp; pricing</p>
               <h2 className="display text-ink text-[clamp(2.5rem,5vw,4.4rem)]">
-                Hosting, design, care. One partner.
+                Built once. Hosted monthly.
               </h2>
               <p className="mt-6 text-lg leading-relaxed text-ink/75">
-                Southweb is the single accountable partner for your web presence — hosting, design, build
-                and ongoing support — powered by Cloudflare globally and supported locally in Centurion.
+                Four clear services: a new website, a rebuild of the one you have, a non-profit rate
+                and hosting-only. Builds are paid once-off; hosting is R300 a month.
               </p>
-              <Link to="/services" className="btn btn-dark mt-8">
-                See services <span aria-hidden="true">↗</span>
+
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                <Link to="/services" className="btn btn-dark">
+                  See services <span aria-hidden="true">↗</span>
+                </Link>
+                <Link to="/pricing" className="btn btn-outline bg-cream">
+                  See pricing
+                </Link>
+              </div>
+
+              <Link
+                to="/pricing"
+                className="mt-8 flex flex-col gap-1 border-2 border-ink bg-orange p-4 shadow-hard transition-transform duration-200 hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-hard-sm"
+              >
+                <span className="mono-label text-ink/70">{SALE.eyebrow}</span>
+                <span className="display text-xl text-ink">{SALE.headline}</span>
+                <span className="font-mono text-xs text-ink/70">First come, first served ↗</span>
               </Link>
             </div>
 
-            <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-              {featuredServices.map((service) => {
-                const Icon = service.title.includes('design')
-                  ? Palette
-                  : service.title.includes('E-commerce')
-                    ? ShoppingBag
-                    : ShieldCheck
+            <div className="grid gap-5 sm:grid-cols-2">
+              {SERVICES.map((service) => {
+                const Icon = serviceIcons[service.id]
 
                 return (
                   <article
-                    key={service.title}
+                    key={service.id}
                     className="flex h-full flex-col border-2 border-ink bg-[#faf7ef] p-6 shadow-hard"
                   >
                     <span className="flex size-12 items-center justify-center rounded-full border-2 border-ink bg-lime">
@@ -66,6 +82,18 @@ export function HomePage() {
                     </span>
                     <h3 className="display mt-5 text-2xl text-ink">{service.title}</h3>
                     <p className="mt-3 text-sm leading-relaxed text-ink/70">{service.body}</p>
+
+                    <div className="mt-auto flex flex-wrap items-baseline gap-x-2 gap-y-1 pt-5">
+                      <span className="display text-2xl text-ink">
+                        {formatRand(salePrice(service.price))}
+                      </span>
+                      <span className="font-mono text-xs text-ink/45 line-through">
+                        {formatRand(service.price)}
+                      </span>
+                      <span className="mono-label text-ink/60">
+                        {service.billing === 'monthly' ? '/ month' : 'once-off'}
+                      </span>
+                    </div>
                   </article>
                 )
               })}

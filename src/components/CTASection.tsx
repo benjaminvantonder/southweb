@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { SALE } from '../lib/site'
 
 type CTASectionProps = {
   eyebrow?: string
@@ -13,11 +14,11 @@ type CTASectionProps = {
 export function CTASection({
   eyebrow = '(06) Ready when you are',
   title = 'Give your website a serious upgrade.',
-  lede = 'Cloudflare delivery, modern build, local support — from first launch to everyday care.',
+  lede = 'Once-off builds, monthly hosting and local support — from first sketch to launch.',
   primaryTo = '/contact',
   primaryLabel = 'Get started',
-  secondaryTo = '/services',
-  secondaryLabel = 'See services',
+  secondaryTo = '/pricing',
+  secondaryLabel = 'See pricing',
 }: CTASectionProps) {
   return (
     <section className="relative overflow-hidden bg-lime py-24 sm:py-28">
@@ -32,9 +33,9 @@ export function CTASection({
           <p className="text-lg font-semibold text-ink sm:text-xl">What happens next?</p>
           <ol className="mt-5 grid gap-3 text-sm text-ink/80">
             <li>Discovery call or intake form.</li>
-            <li>Technical audit and hosting plan.</li>
-            <li>Build or migration plan with timeline.</li>
-            <li>Live deployment and support handoff.</li>
+            <li>A recommendation across the four services.</li>
+            <li>Scope, price and timeline in writing.</li>
+            <li>Launch and hosting handover.</li>
           </ol>
         </div>
       </div>
@@ -45,6 +46,17 @@ export function CTASection({
         </Link>
         <Link to={secondaryTo} className="btn btn-outline w-full bg-cream sm:w-auto">
           {secondaryLabel}
+        </Link>
+      </div>
+
+      <div className="shell mt-8">
+        <Link
+          to="/pricing"
+          className="inline-flex flex-wrap items-center gap-x-3 gap-y-1 rounded-full border-2 border-ink bg-cream px-4 py-2.5 shadow-hard-sm transition-transform duration-200 hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none"
+        >
+          <span className="mono-label text-orange-deep">{SALE.eyebrow}</span>
+          <span className="font-mono text-xs text-ink/80">{SALE.short}</span>
+          <span aria-hidden="true">↗</span>
         </Link>
       </div>
     </section>

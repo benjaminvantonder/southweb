@@ -11,7 +11,7 @@ export function FaqSection({ faqs }: FaqSectionProps) {
         <div className="text-center">
           <p className="mono-label mb-5 text-orange-deep">(03) Frequently asked questions</p>
           <h2 className="display text-ink text-[clamp(2.4rem,5.5vw,4.8rem)]">
-            Hosting questions, answered plainly.
+            Straight answers, no jargon.
           </h2>
         </div>
 

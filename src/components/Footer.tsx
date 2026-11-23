@@ -1,5 +1,12 @@
-import { Link } from 'react-router-dom'
-import { SITE, NAV_LINKS } from '../lib/site'
+import { Link, NavLink } from 'react-router-dom'
+import { cn } from '../lib/cn'
+import { SITE, NAV_LINKS, SALE } from '../lib/site'
+
+const footerLinkClass = ({ isActive }: { isActive: boolean }) =>
+  cn(
+    'inline-flex min-h-6 items-center gap-2 transition-colors',
+    isActive ? 'text-lime' : 'text-cream/80 hover:text-lime',
+  )
 
 export function Footer() {
   return (
@@ -15,9 +22,17 @@ export function Footer() {
             <span className="size-2 rounded-full bg-ink" aria-hidden="true" />
           </Link>
           <p className="mt-5 max-w-[38ch] text-sm leading-relaxed text-cream/70">
-            Cloudflare-powered web hosting and build care for South African businesses that want fast
-            global delivery without losing local support.
+            Websites built, rebuilt and hosted for South African businesses that want fast delivery
+            without losing local support.
           </p>
+
+          <Link
+            to="/pricing"
+            className="mt-6 inline-flex flex-col gap-1 border-2 border-cream/25 px-4 py-3 transition-colors hover:border-lime"
+          >
+            <span className="mono-label text-lime">{SALE.eyebrow}</span>
+            <span className="text-sm text-cream">{SALE.short} ↗</span>
+          </Link>
         </div>
 
         <nav aria-label="Footer navigation">
@@ -25,15 +40,37 @@ export function Footer() {
           <ul className="grid gap-3 text-sm">
             {NAV_LINKS.map((link) => (
               <li key={link.path}>
-                <Link to={link.path} className="text-cream/80 transition-colors hover:text-lime">
-                  {link.label}
-                </Link>
+                <NavLink to={link.path} className={footerLinkClass}>
+                  {({ isActive }) => (
+                    <>
+                      <span
+                        className={cn(
+                          'size-1.5 rounded-full',
+                          isActive ? 'bg-lime' : 'bg-transparent',
+                        )}
+                        aria-hidden="true"
+                      />
+                      {link.label}
+                    </>
+                  )}
+                </NavLink>
               </li>
             ))}
             <li>
-              <Link to="/contact" className="text-lime transition-colors hover:text-cream">
-                Contact
-              </Link>
+              <NavLink to="/contact" className={footerLinkClass}>
+                {({ isActive }) => (
+                  <>
+                    <span
+                      className={cn(
+                        'size-1.5 rounded-full',
+                        isActive ? 'bg-lime' : 'bg-transparent',
+                      )}
+                      aria-hidden="true"
+                    />
+                    Contact
+                  </>
+                )}
+              </NavLink>
             </li>
           </ul>
         </nav>
@@ -47,7 +84,10 @@ export function Footer() {
               </a>
             </li>
             <li>
-              <a href={`mailto:${SITE.email}`} className="text-cream/80 transition-colors hover:text-lime">
+              <a
+                href={`mailto:${SITE.email}`}
+                className="break-all text-cream/80 transition-colors hover:text-lime"
+              >
                 {SITE.email}
               </a>
             </li>

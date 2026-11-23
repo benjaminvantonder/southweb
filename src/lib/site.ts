@@ -13,48 +13,78 @@ export const SITE = {
 export const NAV_LINKS = [
   { label: 'Work', path: '/work' },
   { label: 'Services', path: '/services' },
+  { label: 'Pricing', path: '/pricing' },
   { label: 'Process', path: '/process' },
   { label: 'FAQ', path: '/faq' },
 ] as const
 
+export type Billing = 'once-off' | 'monthly'
+
 export type Service = {
+  id: 'build' | 'rebuild' | 'nonprofit' | 'hosting'
   title: string
+  price: number
+  billing: Billing
+  bestFor: string
   body: string
   bullets: string[]
 }
 
+// The only four services Southweb offers. Keep copy, pricing and the contact
+// form's service list tied to this array.
 export const SERVICES: Service[] = [
   {
-    title: 'Managed Cloudflare hosting',
-    body: 'Your website hosted on Cloudflare’s global edge network, with managed DNS, SSL, caching and delivery for South African and global audiences.',
-    bullets: ['Global CDN', 'Managed SSL', 'Caching rules', 'Analytics'],
+    id: 'build',
+    title: 'Fully built website',
+    price: 4000,
+    billing: 'once-off',
+    bestFor: 'A business that needs a brand-new website.',
+    body: 'A complete website designed and built from scratch, from the first layout to a launch-ready site on Cloudflare.',
+    bullets: ['Custom design', 'Multi-page structure', 'Mobile-first build', 'Launch-ready'],
   },
   {
-    title: 'Website design and build',
-    body: 'Modern, fast marketing sites and web apps designed around clean typography, bold structure and a clear conversion path.',
-    bullets: ['Design system', 'React / static build', 'CMS', 'Image optimisation'],
+    id: 'rebuild',
+    title: 'Website rebuild (from existing)',
+    price: 3500,
+    billing: 'once-off',
+    bestFor: 'An existing site that looks dated or is slow.',
+    body: 'We take your current website and rebuild it with a modern look, faster pages and a cleaner structure, keeping the content that still works.',
+    bullets: ['Modern redesign', 'Existing content reused', 'Faster pages', 'Same domain'],
   },
   {
-    title: 'E-commerce hosting',
-    body: 'Online stores hosted on fast infrastructure with caching, image delivery and payment integration support.',
-    bullets: ['Product performance', 'Cart reliability', 'Checkout optimisation'],
+    id: 'nonprofit',
+    title: 'Non-profit websites',
+    price: 2000,
+    billing: 'once-off',
+    bestFor: 'Registered non-profits and community organisations.',
+    body: 'A complete website for non-profits and community organisations, at a price that respects a tight budget.',
+    bullets: ['Full website build', 'Community-focused layout', 'Donation details', 'Easy to update'],
   },
   {
-    title: 'Migration and decommissioning',
-    body: 'Move existing sites away from legacy hosting with minimal downtime and clean up old vendor tooling.',
-    bullets: ['Free first migration', 'DNS move', 'Email move'],
-  },
-  {
-    title: 'Performance and Core Web Vitals',
-    body: 'Technical fixes to keep LCP, CLS and INP healthy after launch, with regression checks as content grows.',
-    bullets: ['LCP < 2.5s', 'CLS < 0.1', 'Performance audits'],
-  },
-  {
-    title: 'Security and managed updates',
-    body: 'Managed patching, security headers, DDoS protection through Cloudflare and proactive monitoring for client sites.',
-    bullets: ['Managed updates', 'WAF', 'DDoS', 'Backups'],
+    id: 'hosting',
+    title: 'Website hosting only',
+    price: 300,
+    billing: 'monthly',
+    bestFor: 'A site you already have that needs a reliable host.',
+    body: 'Hosting for a website you already own. We put it on Cloudflare, keep SSL and caching handled, and stay available when something needs attention.',
+    bullets: ['Cloudflare global edge', 'SSL included', 'Caching and delivery', 'Local support'],
   },
 ]
+
+export const SALE = {
+  eyebrow: 'Debut sale',
+  headline: 'First 10 clients get 50% off.',
+  detail: 'First come, first served. The first 10 customers get half price on every service, builds and hosting included.',
+  short: 'First 10 clients · 50% off',
+}
+
+export function formatRand(amount: number) {
+  return `R${amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ')}`
+}
+
+export function salePrice(amount: number) {
+  return amount / 2
+}
 
 export type WorkProject = {
   name: string
@@ -144,22 +174,22 @@ export const PROCESS: ProcessStep[] = [
   {
     number: '01',
     title: 'Discover',
-    body: 'Strategy, audit, analytics and competitive context. We map what the site must do before we design it.',
+    body: 'We talk through the business, the goal and the pages you need. You get a clear scope, price and timeline before anything starts.',
   },
   {
     number: '02',
     title: 'Design',
-    body: 'Information architecture, visual direction, prototypes and content design. You approve the direction early.',
+    body: 'Layout, type and colour direction for the pages in scope. You approve the design early, before the build begins.',
   },
   {
     number: '03',
     title: 'Build',
-    body: 'Design, development and content build on modern stack, with staging deployment before production cutover.',
+    body: 'We build the approved design as a fast, mobile-first website, then show it to you on a staging link for feedback.',
   },
   {
     number: '04',
     title: 'Launch and care',
-    body: 'Migration, DNS cutover, monitoring and ongoing support through Southweb’s local team.',
+    body: 'The site goes live on Cloudflare hosting. Builds are paid once-off; hosting continues monthly for as long as you need it.',
   },
 ]
 
@@ -170,27 +200,38 @@ export type Faq = {
 
 export const FAQS: Faq[] = [
   {
-    question: 'Do you host websites on Cloudflare?',
-    answer: 'Yes. Southweb hosts client websites on Cloudflare’s global edge network, with managed DNS, SSL, caching and delivery through Cloudflare.',
+    question: 'What services does Southweb offer?',
+    answer:
+      'Four: a fully built website (R4 000), a website rebuild from your existing site (R3 500), non-profit websites (R2 000) and website hosting only (R300 per month).',
   },
   {
-    question: 'Do the servers matter for South Africa?',
-    answer: 'Southweb uses Cloudflare’s global infrastructure and local South African support, so South African visitors reach fast edge networks while our team handles care from Centurion.',
+    question: 'How does payment work?',
+    answer:
+      'Website builds are once-off payments. Hosting is billed monthly and is separate from the build price, whether you take hosting with us or keep your current host.',
   },
   {
-    question: 'Can you migrate a client away from their old host?',
-    answer: 'Yes. We handle migrations to Cloudflare-hosted infrastructure with staged testing and minimal downtime.',
+    question: 'What is the debut sale?',
+    answer:
+      'Our first 10 customers get 50% off every service. It is first come, first served, and the offer closes once those 10 slots are taken.',
   },
   {
-    question: 'What happens if a site goes down?',
-    answer: 'We monitor managed sites and have a direct support channel. Critical incidents trigger immediate response and rollback if needed.',
+    question: 'What is included in a fully built website?',
+    answer:
+      'A custom design, a mobile-first build across the pages in scope, and launch onto Cloudflare hosting. Scope and timeline are agreed upfront so there are no surprises.',
   },
   {
-    question: 'Do you manage security?',
-    answer: 'We apply managed updates, security headers, DDoS protection and SSL management where relevant through Cloudflare.',
+    question: 'I already have a website. Do I need a rebuild?',
+    answer:
+      'If the site works but looks dated, loads slowly or is hard to update, a rebuild is usually the better fit. We reuse the content that still works and give it a modern look, on the same domain.',
   },
   {
-    question: 'How is support handled?',
-    answer: 'Southweb is a local team in Centurion. Client sites get direct access to a human who knows the site’s context.',
+    question: 'Can you host a site you did not build?',
+    answer:
+      'Yes. Website hosting only is R300 per month. Send us the site address and we will confirm it is a good fit for Cloudflare hosting before you commit.',
+  },
+  {
+    question: 'How do I get started?',
+    answer:
+      'Use the contact form, email southweb.hosting@gmail.com or call +27 76 639 5871. Tell us which service you need and we will reply with the next step.',
   },
 ]

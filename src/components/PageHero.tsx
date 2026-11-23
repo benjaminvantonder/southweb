@@ -1,3 +1,5 @@
+import { cn } from '../lib/cn'
+
 type PageHeroProps = {
   eyebrow: string
   title: string
@@ -10,7 +12,7 @@ type PageHeroProps = {
 export function PageHero({ eyebrow, title, lede, image, imageAlt, imageCaption }: PageHeroProps) {
   return (
     <section className="relative overflow-hidden bg-cream pt-36 pb-16 sm:pt-40">
-      <div className="shell grid items-center gap-10 lg:grid-cols-[1.1fr_0.9fr]">
+      <div className={cn('shell grid items-center gap-10', image && 'lg:grid-cols-[1.1fr_0.9fr]')}>
         <div className="max-w-[760px]">
           <p className="mono-label mb-5 text-orange-deep">{eyebrow}</p>
           <h1 className="hero-title display text-ink">{title}</h1>

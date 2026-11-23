@@ -8,7 +8,7 @@ export function ProcessPage() {
       <PageHero
         eyebrow="(05) Process"
         title="From first idea to live launch."
-        lede="A four-stage process designed to keep momentum high without letting technical risk sneak up on a client."
+        lede="A four-stage process that keeps scope, price and timeline clear from the first call to launch day."
         image="/images/team.jpg"
         imageAlt="Team collaborating on a website build"
         imageCaption="Staging and build phase"

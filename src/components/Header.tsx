@@ -4,6 +4,8 @@ import { Link, NavLink } from 'react-router-dom'
 import { cn } from '../lib/cn'
 import { NAV_LINKS, SITE } from '../lib/site'
 
+const MOBILE_LINKS = [...NAV_LINKS, { label: 'Contact', path: '/contact' }]
+
 export function Header() {
   const [open, setOpen] = useState(false)
   const overlayRef = useRef<HTMLDivElement>(null)
@@ -87,9 +89,10 @@ export function Header() {
 
           <Link
             to="/contact"
+            aria-label="Contact Southweb"
             className="btn btn-pink min-h-11 px-3 text-[0.6rem] sm:px-4 sm:text-[0.65rem]"
           >
-            <span className="sm:hidden">Let&rsquo;s talk</span>
+            <span className="sm:hidden max-[359px]:hidden">Let&rsquo;s talk</span>
             <span className="hidden sm:inline">Let&rsquo;s talk hosting</span>
             <ArrowUpRight className="size-4" strokeWidth={2.4} aria-hidden="true" />
           </Link>
@@ -120,7 +123,7 @@ export function Header() {
         inert={!open}
         style={{ clipPath: open ? 'inset(0 0 0 0)' : 'inset(0 0 100% 0)' }}
         className={cn(
-          'fixed inset-0 z-[60] flex flex-col bg-lime outline-none transition-[clip-path] duration-500 ease-[cubic-bezier(.76,0,.24,1)] md:hidden',
+          'fixed inset-0 z-[60] flex flex-col overflow-y-auto bg-lime outline-none transition-[clip-path] duration-500 ease-[cubic-bezier(.76,0,.24,1)] md:hidden',
           open ? 'pointer-events-auto' : 'pointer-events-none',
         )}
       >
@@ -129,20 +132,34 @@ export function Header() {
           className="flex flex-1 flex-col justify-center px-5 pt-24 pb-8"
         >
           <ul>
-            {NAV_LINKS.map((link, index) => (
+            {MOBILE_LINKS.map((link, index) => (
               <li key={link.path} className="border-b-2 border-forest/20">
-                <Link
+                <NavLink
                   to={link.path}
                   onClick={() => setOpen(false)}
-                  className="group flex items-center justify-between gap-4 py-4"
+                  className="group flex items-center justify-between gap-4 py-3"
                 >
-                  <span className="display text-[clamp(2.8rem,13vw,4.5rem)] text-forest transition-transform duration-200 group-hover:translate-x-2">
-                    {link.label}
-                  </span>
-                  <span className="font-mono text-xs tracking-[0.16em] text-forest/60">
-                    0{index + 1}
-                  </span>
-                </Link>
+                  {({ isActive }) => (
+                    <>
+                      <span
+                        className={cn(
+                          'display text-[clamp(2rem,10vw,4rem)] text-forest transition-transform duration-200 group-hover:translate-x-2',
+                          isActive && 'text-ink underline decoration-4 underline-offset-4',
+                        )}
+                      >
+                        {link.label}
+                      </span>
+                      <span
+                        className={cn(
+                          'font-mono text-xs tracking-[0.16em]',
+                          isActive ? 'text-ink' : 'text-forest/60',
+                        )}
+                      >
+                        {isActive ? '●' : `0${index + 1}`}
+                      </span>
+                    </>
+                  )}
+                </NavLink>
               </li>
             ))}
           </ul>
@@ -151,13 +168,21 @@ export function Header() {
             <span className="mono-label text-forest/60">Say hello</span>
             <a
               href={`mailto:${SITE.email}`}
-              className="font-display text-xl text-forest underline decoration-2 underline-offset-4"
+              className="font-display text-xl break-all text-forest underline decoration-2 underline-offset-4"
             >
               {SITE.email}
             </a>
             <p className="mono-label mt-3 text-forest/60">
               Centurion · South Africa · 24/7 support
             </p>
+            <Link
+              to="/pricing"
+              onClick={() => setOpen(false)}
+              className="mt-3 inline-flex w-fit items-center gap-3 border-2 border-ink bg-orange px-4 py-3 shadow-hard-sm"
+            >
+              <span className="mono-label text-ink/70">Debut sale</span>
+              <span className="font-display text-lg leading-none text-ink">50% off</span>
+            </Link>
           </div>
         </nav>
       </div>

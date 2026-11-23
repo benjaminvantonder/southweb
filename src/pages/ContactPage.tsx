@@ -1,12 +1,17 @@
 import { useState, type FormEvent } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import { CTASection } from '../components/CTASection'
 import { PageHero } from '../components/PageHero'
 import { SERVICES, SITE } from '../lib/site'
 
 export function ContactPage() {
+  const [searchParams] = useSearchParams()
+  const requestedService = searchParams.get('service')
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
-  const [service, setService] = useState(SERVICES[0].title)
+  const [service, setService] = useState(
+    () => SERVICES.find((item) => item.title === requestedService)?.title ?? SERVICES[0].title,
+  )
   const [message, setMessage] = useState('')
   const [sent, setSent] = useState(false)
 
@@ -32,7 +37,7 @@ export function ContactPage() {
       <PageHero
         eyebrow="(07) Contact"
         title="Let’s build your next site."
-        lede="Tell us about the business, the goal and the launch date. Southweb will reply with a Cloudflare-powered plan and honest timeline."
+        lede="Tell us which of the four services fits, plus the business and the goal. Southweb will reply with clear scope, price and timeline."
         image="/images/contact-handshake.jpg"
         imageAlt="Client and web developer agreeing on a new website project"
         imageCaption="Centurion · South Africa"
@@ -40,8 +45,8 @@ export function ContactPage() {
 
       <section className="section relative z-10 bg-cream">
         <div className="shell grid gap-12 lg:grid-cols-[0.9fr_1.1fr]">
-          <div className="grid gap-6">
-            <div className="border-2 border-ink bg-[#faf7ef] p-7 shadow-hard">
+          <div className="grid min-w-0 gap-6">
+            <div className="border-2 border-ink bg-[#faf7ef] p-6 shadow-hard sm:p-7">
               <p className="mono-label mb-4 text-orange-deep">Get in touch</p>
               <h2 className="display text-3xl text-ink">Start the conversation.</h2>
               <ul className="mt-6 grid gap-4 text-sm">
@@ -51,7 +56,7 @@ export function ContactPage() {
                   </a>
                 </li>
                 <li>
-                  <a href={`mailto:${SITE.email}`} className="font-display text-2xl text-ink transition-colors hover:text-orange">
+                  <a href={`mailto:${SITE.email}`} className="font-display text-xl break-all text-ink transition-colors hover:text-orange sm:text-2xl">
                     {SITE.email}
                   </a>
                 </li>
@@ -64,7 +69,7 @@ export function ContactPage() {
               </ul>
             </div>
 
-            <div className="border-2 border-ink bg-ink p-7 text-cream shadow-hard">
+            <div className="border-2 border-ink bg-ink p-6 text-cream shadow-hard sm:p-7">
               <p className="mono-label mb-4 text-lime">Support hours</p>
               <p className="text-lg">Mon–Fri, 08:00–17:00 SAST</p>
               <p className="mt-3 text-sm text-cream/70">Critical site issues: 24/7 human response.</p>
@@ -79,49 +84,49 @@ export function ContactPage() {
             </div>
           </div>
 
-          <div className="border-2 border-ink bg-[#faf7ef] p-8 shadow-hard">
+          <div className="min-w-0 border-2 border-ink bg-[#faf7ef] p-6 shadow-hard sm:p-8">
             <h2 className="display text-3xl text-ink">Send an enquiry.</h2>
             {sent ? (
               <div className="mt-8 border-2 border-ink bg-cream p-6">
-                <p className="font-display text-2xl text-ink">Thanks, {name || 'friend'}.</p>
+                <p className="font-display text-2xl break-words text-ink">Thanks, {name || 'friend'}.</p>
                 <p className="mt-3 text-sm text-ink/70">
                   Your email app should have opened with the message. If it didn’t, email us directly at{' '}
-                  <a href={`mailto:${SITE.email}`} className="font-semibold text-ink underline">
+                  <a href={`mailto:${SITE.email}`} className="font-semibold break-all text-ink underline">
                     {SITE.email}
                   </a>
                   .
                 </p>
               </div>
             ) : (
-              <form className="mt-6 grid gap-5" onSubmit={handleSubmit}>
-                <div className="grid gap-2 sm:grid-cols-2">
-                  <label className="grid gap-2">
+              <form className="mt-6 grid min-w-0 gap-5" onSubmit={handleSubmit}>
+                <div className="grid min-w-0 gap-2 sm:grid-cols-2">
+                  <label className="grid min-w-0 gap-2">
                     <span className="mono-label text-ink/70">Name</span>
                     <input
                       required
                       value={name}
                       onChange={(event) => setName(event.target.value)}
-                      className="min-h-12 border-2 border-ink bg-cream px-4 font-mono text-sm outline-none focus-visible:ring-4 focus-visible:ring-blue"
+                      className="min-h-12 w-full min-w-0 border-2 border-ink bg-cream px-4 font-mono text-sm outline-none focus-visible:ring-4 focus-visible:ring-blue"
                     />
                   </label>
-                  <label className="grid gap-2">
+                  <label className="grid min-w-0 gap-2">
                     <span className="mono-label text-ink/70">Email</span>
                     <input
                       required
                       type="email"
                       value={email}
                       onChange={(event) => setEmail(event.target.value)}
-                      className="min-h-12 border-2 border-ink bg-cream px-4 font-mono text-sm outline-none focus-visible:ring-4 focus-visible:ring-blue"
+                      className="min-h-12 w-full min-w-0 border-2 border-ink bg-cream px-4 font-mono text-sm outline-none focus-visible:ring-4 focus-visible:ring-blue"
                     />
                   </label>
                 </div>
 
-                <label className="grid gap-2">
+                <label className="grid min-w-0 gap-2">
                   <span className="mono-label text-ink/70">Service</span>
                   <select
                     value={service}
                     onChange={(event) => setService(event.target.value)}
-                    className="min-h-12 border-2 border-ink bg-cream px-4 font-mono text-sm outline-none focus-visible:ring-4 focus-visible:ring-blue"
+                    className="min-h-12 w-full min-w-0 border-2 border-ink bg-cream px-4 font-mono text-sm outline-none focus-visible:ring-4 focus-visible:ring-blue"
                   >
                     {SERVICES.map((item) => (
                       <option key={item.title} value={item.title}>
@@ -131,14 +136,14 @@ export function ContactPage() {
                   </select>
                 </label>
 
-                <label className="grid gap-2">
+                <label className="grid min-w-0 gap-2">
                   <span className="mono-label text-ink/70">Project details</span>
                   <textarea
                     required
                     rows={5}
                     value={message}
                     onChange={(event) => setMessage(event.target.value)}
-                    className="border-2 border-ink bg-cream px-4 py-3 font-mono text-sm outline-none focus-visible:ring-4 focus-visible:ring-blue"
+                    className="w-full min-w-0 border-2 border-ink bg-cream px-4 py-3 font-mono text-sm outline-none focus-visible:ring-4 focus-visible:ring-blue"
                   />
                 </label>
 
