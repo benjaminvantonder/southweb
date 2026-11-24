@@ -1,4 +1,4 @@
-import { ArrowUpRight, Menu, X } from 'lucide-react'
+import { ArrowUpRight, House, Menu, X } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { cn } from '../lib/cn'
@@ -51,11 +51,23 @@ export function Header() {
         <div className="flex items-center gap-3">
           <Link
             to="/"
-            aria-label="Southweb home"
-            className="inline-flex min-h-11 items-center gap-2 rounded-full border-2 border-ink bg-lime px-3.5 py-2 shadow-hard-sm transition-transform duration-200 hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none"
+            aria-label="Southweb — back to home"
+            className="inline-flex min-h-11 items-center gap-2 rounded-full border-2 border-ink bg-lime px-3 py-2 shadow-hard-sm transition-transform duration-200 hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none"
           >
-            <span className="font-display text-[1.12rem] leading-none tracking-[0.02em]">SOUTHWEB</span>
-            <span className="size-2 rounded-full bg-ink" aria-hidden="true" />
+            <img
+              src="/images/southweb-logo.png"
+              alt=""
+              width={1601}
+              height={585}
+              className="h-5 w-auto brightness-0 sm:h-7"
+            />
+            <span className="h-4 w-px bg-ink/25 sm:h-5" aria-hidden="true" />
+            <span
+              className="flex size-6 items-center justify-center rounded-full border border-ink/25 bg-cream/70"
+              aria-hidden="true"
+            >
+              <House className="size-3.5 text-ink" strokeWidth={2.4} />
+            </span>
           </Link>
 
           <span className="mono-label hidden text-ink/70 lg:inline">Local web hosting</span>
@@ -71,7 +83,7 @@ export function Header() {
               to={link.path}
               className={({ isActive }) =>
                 cn(
-                  'rounded-full px-3.5 py-2 font-mono text-[0.62rem] font-medium tracking-[0.12em] uppercase transition-colors duration-200',
+                  'rounded-full px-2.5 py-2 font-mono text-[0.62rem] font-medium tracking-[0.12em] uppercase transition-colors duration-200 lg:px-3.5',
                   isActive ? 'bg-ink text-cream' : 'hover:bg-ink hover:text-cream',
                 )
               }

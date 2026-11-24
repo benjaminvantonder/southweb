@@ -1,7 +1,7 @@
 export const SITE = {
   name: 'Southweb',
   tagline: 'Cloudflare-powered web hosting for South African business',
-  email: 'southweb.hosting@gmail.com',
+  email: 'info@southweb.co.za',
   phone: '+27 76 639 5871',
   phoneHref: 'tel:+27766395871',
   whatsappHref: 'https://wa.me/27766395871',
@@ -232,6 +232,6 @@ export const FAQS: Faq[] = [
   {
     question: 'How do I get started?',
     answer:
-      'Use the contact form, email southweb.hosting@gmail.com or call +27 76 639 5871. Tell us which service you need and we will reply with the next step.',
+      'Use the contact form, email info@southweb.co.za or call +27 76 639 5871. Tell us which service you need and we will reply with the next step.',
   },
 ]

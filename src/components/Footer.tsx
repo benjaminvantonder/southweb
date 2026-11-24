@@ -1,3 +1,4 @@
+import { House } from 'lucide-react'
 import { Link, NavLink } from 'react-router-dom'
 import { cn } from '../lib/cn'
 import { SITE, NAV_LINKS, SALE } from '../lib/site'
@@ -18,8 +19,19 @@ export function Footer() {
             className="inline-flex min-h-11 items-center gap-2 rounded-full border-2 border-cream bg-lime px-4 py-2"
             aria-label={`${SITE.name} home`}
           >
-            <span className="font-display text-lg leading-none text-ink">SOUTHWEB</span>
-            <span className="size-2 rounded-full bg-ink" aria-hidden="true" />
+            <img
+              src="/images/southweb-logo.png"
+              alt=""
+              width={1601}
+              height={585}
+              className="h-6 w-auto brightness-0"
+            />
+            <span
+              className="flex size-6 items-center justify-center rounded-full border border-ink/25 bg-cream/70"
+              aria-hidden="true"
+            >
+              <House className="size-3.5 text-ink" strokeWidth={2.4} />
+            </span>
           </Link>
           <p className="mt-5 max-w-[38ch] text-sm leading-relaxed text-cream/70">
             Websites built, rebuilt and hosted for South African businesses that want fast delivery
