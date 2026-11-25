@@ -8,8 +8,11 @@ const ssrDir = join(root, '.ssr')
 const templatePath = join(distDir, 'index.html')
 
 async function findServerEntry() {
-  const files = await readdir(ssrDir)
-  const entry = files.find((file) => /^entry-server\.(js|mjs)$/.test(file))
+  // The plain Vite SSR build writes `.ssr/entry-server.js`, while the Cloudflare
+  // Vite plugin (if it is ever enabled) writes `.ssr/assets/entry-server-*.js`.
+  // Search the whole output directory so either layout works.
+  const files = await readdir(ssrDir, { recursive: true })
+  const entry = files.find((file) => /(^|[\\/])entry-server[^\\/]*\.(js|mjs)$/.test(file))
 
   if (!entry) {
     throw new Error(`Could not find the SSR entry in ${ssrDir}`)

@@ -1,17 +1,4 @@
-# Prerendered routes. Each path has its own static HTML file with unique
-# metadata, canonical URL and structured data.
-/work /work/index.html 200
-/services /services/index.html 200
-/pricing /pricing/index.html 200
-/process /process/index.html 200
-/faq /faq/index.html 200
-/contact /contact/index.html 200
-
-# Keep one canonical URL per page.
+# Workers static assets serve /work from /work/index.html and redirect /work/
+# to /work automatically (html_handling: drop-trailing-slash). Keep one
+# canonical URL for the home page too.
 /index.html / 301
-/work/ /work 301
-/services/ /services 301
-/pricing/ /pricing 301
-/process/ /process 301
-/faq/ /faq 301
-/contact/ /contact 301
