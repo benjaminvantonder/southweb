@@ -20,10 +20,10 @@ export function Footer() {
             aria-label={`${SITE.name} home`}
           >
             <img
-              src="/images/southweb-logo.png"
+              src="/images/southweb-logo-400.png"
               alt=""
-              width={1601}
-              height={585}
+              width={400}
+              height={146}
               className="h-6 w-auto brightness-0"
             />
             <span
@@ -33,9 +33,10 @@ export function Footer() {
               <House className="size-3.5 text-ink" strokeWidth={2.4} />
             </span>
           </Link>
-          <p className="mt-5 max-w-[38ch] text-sm leading-relaxed text-cream/70">
+          <p className="mt-5 max-w-[40ch] text-sm leading-relaxed text-cream/70">
             Websites built, rebuilt and hosted for South African businesses that want fast delivery
-            without losing local support.
+            without losing local support. Based in Centurion, Gauteng and working across South
+            Africa.
           </p>
 
           <Link
@@ -48,7 +49,7 @@ export function Footer() {
         </div>
 
         <nav aria-label="Footer navigation">
-          <p className="mono-label mb-4 text-cream/50">Explore</p>
+          <p className="mono-label mb-4 text-cream/60">Explore</p>
           <ul className="grid gap-3 text-sm">
             {NAV_LINKS.map((link) => (
               <li key={link.path}>
@@ -88,7 +89,7 @@ export function Footer() {
         </nav>
 
         <div>
-          <p className="mono-label mb-4 text-cream/50">Contact</p>
+          <p className="mono-label mb-4 text-cream/60">Contact</p>
           <ul className="grid gap-3 text-sm">
             <li>
               <a href={SITE.phoneHref} className="text-cream/80 transition-colors hover:text-lime">
@@ -109,7 +110,7 @@ export function Footer() {
       </div>
 
       <div className="border-t border-cream/15">
-        <div className="shell flex flex-col gap-3 py-6 text-xs text-cream/50 sm:flex-row sm:items-center sm:justify-between">
+        <div className="shell flex flex-col gap-3 py-6 text-xs text-cream/60 sm:flex-row sm:items-center sm:justify-between">
           <p>© {new Date().getFullYear()} {SITE.name}. All rights reserved.</p>
           <p>Cloudflare-powered hosting · Based in Centurion, serving South Africa.</p>
         </div>

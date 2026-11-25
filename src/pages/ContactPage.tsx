@@ -1,19 +1,29 @@
-import { useState, type FormEvent } from 'react'
+import { useState, useSyncExternalStore, type FormEvent } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { CTASection } from '../components/CTASection'
 import { PageHero } from '../components/PageHero'
 import { SERVICES, SITE } from '../lib/site'
 
+const subscribeToNothing = () => () => {}
+
 export function ContactPage() {
   const [searchParams] = useSearchParams()
-  const requestedService = searchParams.get('service')
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
-  const [service, setService] = useState(
-    () => SERVICES.find((item) => item.title === requestedService)?.title ?? SERVICES[0].title,
-  )
+  const [serviceChoice, setServiceChoice] = useState<string | null>(null)
   const [message, setMessage] = useState('')
   const [sent, setSent] = useState(false)
+
+  // Stay on the default option during the hydration pass, then apply a service
+  // chosen elsewhere on the site once the browser takes over.
+  const hydrated = useSyncExternalStore(
+    subscribeToNothing,
+    () => true,
+    () => false,
+  )
+  const requestedService = SERVICES.find((item) => item.title === searchParams.get('service'))?.title
+  const service =
+    serviceChoice ?? (hydrated && requestedService ? requestedService : SERVICES[0].title)
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
@@ -36,7 +46,7 @@ export function ContactPage() {
     <>
       <PageHero
         eyebrow="(07) Contact"
-        title="Let’s build your next site."
+        title="Let’s build your next website."
         lede="Tell us which of the four services fits, plus the business and the goal. Southweb will reply with clear scope, price and timeline."
         image="/images/contact-handshake.jpg"
         imageAlt="Client and web developer agreeing on a new website project"
@@ -61,6 +71,9 @@ export function ContactPage() {
                   </a>
                 </li>
                 <li className="text-ink/70">{SITE.address}</li>
+                <li className="text-ink/70">
+                  Serving Centurion, Pretoria and businesses across South Africa.
+                </li>
                 <li>
                   <a href={SITE.whatsappHref} className="font-mono text-xs uppercase tracking-[0.12em] text-ink/70 transition-colors hover:text-orange">
                     Chat on WhatsApp ↗
@@ -125,7 +138,7 @@ export function ContactPage() {
                   <span className="mono-label text-ink/70">Service</span>
                   <select
                     value={service}
-                    onChange={(event) => setService(event.target.value)}
+                    onChange={(event) => setServiceChoice(event.target.value)}
                     className="min-h-12 w-full min-w-0 border-2 border-ink bg-cream px-4 font-mono text-sm outline-none focus-visible:ring-4 focus-visible:ring-blue"
                   >
                     {SERVICES.map((item) => (

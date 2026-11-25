@@ -1,15 +1,27 @@
-import { useState } from 'react'
+import { useSyncExternalStore } from 'react'
 import { Link } from 'react-router-dom'
 import { X } from 'lucide-react'
 import { SALE } from '../lib/site'
 
 const STORAGE_KEY = 'southweb-dismissed-debut-sale'
+const CHANGE_EVENT = 'southweb-sale-dismissed'
 
-function readDismissed() {
+function subscribe(onChange: () => void) {
+  window.addEventListener('storage', onChange)
+  window.addEventListener(CHANGE_EVENT, onChange)
+
+  return () => {
+    window.removeEventListener('storage', onChange)
+    window.removeEventListener(CHANGE_EVENT, onChange)
+  }
+}
+
+function readVisible() {
   try {
-    return window.sessionStorage.getItem(STORAGE_KEY) === '1'
+    return window.sessionStorage.getItem(STORAGE_KEY) !== '1'
   } catch {
-    return false
+    /* session storage can be unavailable in private modes */
+    return true
   }
 }
 
@@ -19,17 +31,16 @@ function storeDismissed() {
   } catch {
     /* session storage can be unavailable in private modes */
   }
+
+  window.dispatchEvent(new Event(CHANGE_EVENT))
 }
 
 export function SaleBadge() {
-  const [visible, setVisible] = useState(() => !readDismissed())
+  // The server (and the hydration pass) renders no badge, then the client reads
+  // session storage so the markup always matches.
+  const visible = useSyncExternalStore(subscribe, readVisible, () => false)
 
   if (!visible) return null
-
-  function dismiss() {
-    storeDismissed()
-    setVisible(false)
-  }
 
   return (
     <div className="fixed bottom-3 left-3 z-[55] max-w-[calc(100vw-1.5rem)] sm:bottom-5 sm:left-5">
@@ -51,7 +62,7 @@ export function SaleBadge() {
 
         <button
           type="button"
-          onClick={dismiss}
+          onClick={storeDismissed}
           aria-label="Dismiss debut sale notice"
           className="absolute top-1.5 right-1.5 flex size-6 items-center justify-center rounded-full border-2 border-ink bg-cream text-ink transition-colors hover:bg-ink hover:text-cream"
         >

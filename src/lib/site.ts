@@ -1,6 +1,6 @@
 export const SITE = {
   name: 'Southweb',
-  tagline: 'Cloudflare-powered web hosting for South African business',
+  tagline: 'Web design, rebuilds and Cloudflare hosting for South African business',
   email: 'info@southweb.co.za',
   phone: '+27 76 639 5871',
   phoneHref: 'tel:+27766395871',

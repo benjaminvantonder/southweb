@@ -12,7 +12,7 @@ export function PricingPage() {
     <>
       <PageHero
         eyebrow="(04) Pricing"
-        title="Straight prices. No surprises."
+        title="Website pricing. No surprises."
         lede="Four services, priced in rand. Builds are once-off, hosting is monthly, and our first 10 clients get 50% off either way."
       />
 
@@ -20,7 +20,7 @@ export function PricingPage() {
         <div className="shell">
           <div className="grid items-center gap-6 border-2 border-ink bg-orange p-6 shadow-hard sm:p-8 lg:grid-cols-[1fr_auto]">
             <div>
-              <p className="mono-label text-ink/70">{SALE.eyebrow}</p>
+              <p className="mono-label text-ink/85">{SALE.eyebrow}</p>
               <h2 className="display mt-3 text-3xl text-ink sm:text-4xl lg:text-5xl">
                 {SALE.headline}
               </h2>
@@ -66,7 +66,7 @@ export function PricingPage() {
 
                 <div className="mt-6 flex flex-wrap items-baseline gap-x-3 gap-y-1">
                   <span className="display text-4xl text-ink">{formatRand(salePrice(service.price))}</span>
-                  <span className="font-mono text-sm text-ink/45 line-through">
+                  <span className="font-mono text-sm text-ink/60 line-through">
                     {formatRand(service.price)}
                   </span>
                 </div>
@@ -123,7 +123,7 @@ export function PricingPage() {
                       {formatRand(salePrice(hosting.price))}
                     </span>
                     <span className="font-display text-xl text-ink/70">/month</span>
-                    <span className="font-mono text-sm text-ink/45 line-through">
+                    <span className="font-mono text-sm text-ink/60 line-through">
                       {formatRand(hosting.price)}
                     </span>
                   </div>

@@ -1,9 +1,17 @@
-# SPA fallbacks for the site's fixed routes.
-# Wildcard fallback rules are deliberately avoided: a destination pointing at
-# the site index normalises back to the root, which a wildcard matches again.
-/work /index.html 200
-/services /index.html 200
-/pricing /index.html 200
-/process /index.html 200
-/faq /index.html 200
-/contact /index.html 200
+# Prerendered routes. Each path has its own static HTML file with unique
+# metadata, canonical URL and structured data.
+/work /work/index.html 200
+/services /services/index.html 200
+/pricing /pricing/index.html 200
+/process /process/index.html 200
+/faq /faq/index.html 200
+/contact /contact/index.html 200
+
+# Keep one canonical URL per page.
+/index.html / 301
+/work/ /work 301
+/services/ /services 301
+/pricing/ /pricing 301
+/process/ /process 301
+/faq/ /faq 301
+/contact/ /contact 301

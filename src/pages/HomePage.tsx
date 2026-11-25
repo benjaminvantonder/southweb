@@ -5,6 +5,7 @@ import { Ribbon } from '../components/Ribbon'
 import { WhySection } from '../components/WhySection'
 import { CTASection } from '../components/CTASection'
 import { SERVICES, WORK, PROCESS, TESTIMONIALS, SALE, formatRand, salePrice } from '../lib/site'
+import { buildSrcSet } from '../lib/images'
 
 const serviceIcons = {
   build: Globe2,
@@ -62,9 +63,9 @@ export function HomePage() {
                 to="/pricing"
                 className="mt-8 flex flex-col gap-1 border-2 border-ink bg-orange p-4 shadow-hard transition-transform duration-200 hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-hard-sm"
               >
-                <span className="mono-label text-ink/70">{SALE.eyebrow}</span>
+                <span className="mono-label text-ink/85">{SALE.eyebrow}</span>
                 <span className="display text-xl text-ink">{SALE.headline}</span>
-                <span className="font-mono text-xs text-ink/70">First come, first served ↗</span>
+                <span className="font-mono text-xs text-ink/85">First come, first served ↗</span>
               </Link>
             </div>
 
@@ -87,7 +88,7 @@ export function HomePage() {
                       <span className="display text-2xl text-ink">
                         {formatRand(salePrice(service.price))}
                       </span>
-                      <span className="font-mono text-xs text-ink/45 line-through">
+                      <span className="font-mono text-xs text-ink/60 line-through">
                         {formatRand(service.price)}
                       </span>
                       <span className="mono-label text-ink/60">
@@ -132,9 +133,14 @@ export function HomePage() {
                 <div className="overflow-hidden border-b-2 border-ink">
                   <img
                     src={project.previewImage}
+                    srcSet={buildSrcSet(project.previewImage, 1200)}
+                    sizes="(min-width: 1024px) 33vw, 100vw"
                     alt={project.previewImageAlt}
-                    className="h-64 w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    width={1200}
+                    height={800}
                     loading="lazy"
+                    decoding="async"
+                    className="h-64 w-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>
                 <div className="p-6">
@@ -166,7 +172,7 @@ export function HomePage() {
           <ol className="grid gap-6 sm:grid-cols-2">
             {PROCESS.slice(0, 3).map((step) => (
               <li key={step.number} className="border-2 border-ink bg-[#faf7ef] p-6 shadow-hard">
-                <span className="font-display text-5xl text-orange">{step.number}</span>
+                <span className="font-display text-5xl text-orange-deep">{step.number}</span>
                 <h3 className="display mt-3 text-2xl text-ink">{step.title}</h3>
                 <p className="mt-3 text-sm leading-relaxed text-ink/70">{step.body}</p>
               </li>

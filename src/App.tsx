@@ -12,26 +12,13 @@ import { Cursor } from './components/Cursor'
 import { Footer } from './components/Footer'
 import { Header } from './components/Header'
 import { SaleBadge } from './components/SaleBadge'
+import { SeoHead } from './components/SeoHead'
 import { useLenis } from './hooks/useLenis'
 import { ScrollTrigger } from './lib/gsap'
-
-const PAGE_TITLES: Record<string, string> = {
-  '/': 'Southweb — Websites built, rebuilt and hosted in South Africa',
-  '/work': 'Work — Southweb',
-  '/services': 'Services — Southweb',
-  '/pricing': 'Pricing — Southweb',
-  '/process': 'Process — Southweb',
-  '/faq': 'FAQ — Southweb',
-  '/contact': 'Contact — Southweb',
-}
 
 function App() {
   const { pathname, key } = useLocation()
   const lenisRef = useLenis()
-
-  useEffect(() => {
-    document.title = PAGE_TITLES[pathname] ?? PAGE_TITLES['/']
-  }, [pathname])
 
   // Stop the browser from restoring the previous page's scroll offset.
   useEffect(() => {
@@ -67,6 +54,7 @@ function App() {
         Skip to content
       </a>
 
+      <SeoHead />
       <Cursor />
       <Header />
 

@@ -40,9 +40,9 @@ export function ServicesPage() {
               to="/pricing"
               className="flex max-w-[300px] flex-col gap-1 border-2 border-ink bg-orange p-4 shadow-hard transition-transform duration-200 hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-hard-sm"
             >
-              <span className="mono-label text-ink/70">{SALE.eyebrow}</span>
+              <span className="mono-label text-ink/85">{SALE.eyebrow}</span>
               <span className="display text-xl text-ink">{SALE.headline}</span>
-              <span className="font-mono text-xs text-ink/70">See the pricing page ↗</span>
+              <span className="font-mono text-xs text-ink/85">See the pricing page ↗</span>
             </Link>
           </div>
 
@@ -86,7 +86,7 @@ export function ServicesPage() {
                     {service.billing === 'monthly' ? (
                       <span className="font-display text-lg text-ink/70">/month</span>
                     ) : null}
-                    <span className="font-mono text-xs text-ink/45 line-through">
+                    <span className="font-mono text-xs text-ink/60 line-through">
                       {formatRand(service.price)}
                     </span>
                     <span className="mono-label text-ink/60">50% off · first 10</span>

@@ -8,7 +8,7 @@ export function FaqPage() {
     <>
       <PageHero
         eyebrow="(06) FAQ"
-        title="Questions, answered plainly."
+        title="Website questions, answered plainly."
         lede="What we build, what it costs, how the debut sale works and what hosting includes — straight answers before you commit."
         image="/images/faq-support.jpg"
         imageAlt="Help desk supporting a website owner with hosting questions"

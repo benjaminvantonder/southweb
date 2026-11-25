@@ -1,5 +1,6 @@
 import { CTASection } from '../components/CTASection'
 import { PageHero } from '../components/PageHero'
+import { buildSrcSet } from '../lib/images'
 import { WORK } from '../lib/site'
 
 export function WorkPage() {
@@ -27,9 +28,14 @@ export function WorkPage() {
               <div className="overflow-hidden border-b-2 border-ink">
                 <img
                   src={project.image}
+                  srcSet={buildSrcSet(project.image, 1280)}
+                  sizes="(min-width: 1024px) 33vw, 100vw"
                   alt={project.imageAlt}
-                  className="h-64 w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  width={1280}
+                  height={800}
                   loading="lazy"
+                  decoding="async"
+                  className="h-64 w-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
               </div>
               <div className="p-6">

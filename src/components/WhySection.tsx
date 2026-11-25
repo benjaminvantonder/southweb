@@ -68,19 +68,19 @@ export function WhySection() {
         <div className="mt-12 grid gap-4 border-t-2 border-ink pt-8 sm:mt-14 sm:grid-cols-2 lg:grid-cols-4">
           <div className="text-center">
             <strong className="display block text-5xl text-forest">99.9%</strong>
-            <span className="mono-label mt-2 block text-forest/70">Uptime SLA</span>
+            <span className="mono-label mt-2 block text-forest/75">Uptime SLA</span>
           </div>
           <div className="text-center">
             <strong className="display block text-5xl text-forest">330+</strong>
-            <span className="mono-label mt-2 block text-forest/70">Global edge cities</span>
+            <span className="mono-label mt-2 block text-forest/75">Global edge cities</span>
           </div>
           <div className="text-center">
             <strong className="display block text-5xl text-forest">&lt;50ms</strong>
-            <span className="mono-label mt-2 block text-forest/70">Global avg latency</span>
+            <span className="mono-label mt-2 block text-forest/75">Global avg latency</span>
           </div>
           <div className="text-center">
             <strong className="display block text-5xl text-forest">24/7</strong>
-            <span className="mono-label mt-2 block text-forest/70">Local humans</span>
+            <span className="mono-label mt-2 block text-forest/75">Local humans</span>
           </div>
         </div>
       </div>

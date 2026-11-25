@@ -55,10 +55,10 @@ export function Header() {
             className="inline-flex min-h-11 items-center gap-2 rounded-full border-2 border-ink bg-lime px-3 py-2 shadow-hard-sm transition-transform duration-200 hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none"
           >
             <img
-              src="/images/southweb-logo.png"
+              src="/images/southweb-logo-400.png"
               alt=""
-              width={1601}
-              height={585}
+              width={400}
+              height={146}
               className="h-5 w-auto brightness-0 sm:h-7"
             />
             <span className="h-4 w-px bg-ink/25 sm:h-5" aria-hidden="true" />
@@ -95,13 +95,12 @@ export function Header() {
 
         <div className="flex items-center gap-2 sm:gap-3">
           <span className="mono-label hidden text-ink/70 xl:inline">
-            Local <span className="text-orange">/</span> Fast <span className="text-orange">/</span>{' '}
-            Human
+            Local <span className="text-orange-deep">/</span> Fast{' '}
+            <span className="text-orange-deep">/</span> Human
           </span>
 
           <Link
             to="/contact"
-            aria-label="Contact Southweb"
             className="btn btn-pink min-h-11 px-3 text-[0.6rem] sm:px-4 sm:text-[0.65rem]"
           >
             <span className="sm:hidden max-[359px]:hidden">Let&rsquo;s talk</span>

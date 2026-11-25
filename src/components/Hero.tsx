@@ -17,7 +17,9 @@ export function Hero() {
     const context = gsap.context(() => {
       gsap.set('.hero-line', { yPercent: 115 })
       gsap.set('.hero-eyebrow', { opacity: 0, y: 14 })
-      gsap.set('.hero-copy-block', { opacity: 0, y: 28 })
+      // Keep the intro copy fully opaque: it is the LCP element, so hiding it
+      // until JavaScript runs would delay the largest paint.
+      gsap.set('.hero-copy-block', { y: 28 })
       gsap.set('.sticker-inner', { opacity: 0, scale: 0.55 })
       gsap.set('.rotating-badge-wrap', { opacity: 0, scale: 0.7 })
 
@@ -33,7 +35,7 @@ export function Hero() {
           { yPercent: 0, duration: 1.05, stagger: 0.09, ease: 'power4.out' },
           '-=0.3',
         )
-        .to('.hero-copy-block', { opacity: 1, y: 0, duration: 0.8 }, '-=0.6')
+        .to('.hero-copy-block', { y: 0, duration: 0.8 }, '-=0.6')
         .to(
           '.sticker-inner',
           {
@@ -102,10 +104,10 @@ export function Hero() {
         <div className="relative">
           <h1 className="hero-title display relative z-10 text-ink">
             <span className="line-mask">
-              <span className="hero-line block">The all-in-one</span>
+              <span className="hero-line block">Websites built,</span>
             </span>
             <span className="line-mask line-mask--overlap">
-              <span className="hero-line hero-line-orange block text-orange">Cloudflare hosting</span>
+              <span className="hero-line hero-line-orange block text-orange-deep">rebuilt &amp; hosted</span>
             </span>
             <span className="line-mask">
               <span className="hero-line hero-line-serif block font-serif text-blue italic">
@@ -241,9 +243,9 @@ export function Hero() {
         <div className="mt-9 flex flex-col items-start justify-between gap-10 md:mt-12 md:flex-row md:items-end">
           <div className="hero-copy-block w-full max-w-[30rem]">
             <p className="max-w-[38ch] text-[clamp(1rem,1.05vw,1.125rem)] leading-relaxed text-ink/80">
-              Southweb pairs <strong>Cloudflare’s global edge network</strong> with a real local team in
-              Centurion. Fast delivery for South African visitors, real humans on support, and no overseas
-              latency tax.
+              Southweb is a <strong>web design and hosting studio in Centurion</strong>, pairing
+              Cloudflare’s global edge network with a real local team. Fast delivery for South
+              African visitors, real humans on support, and no overseas latency tax.
             </p>
 
             <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center">
