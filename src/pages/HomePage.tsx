@@ -4,7 +4,7 @@ import { Hero } from '../components/Hero'
 import { Ribbon } from '../components/Ribbon'
 import { WhySection } from '../components/WhySection'
 import { CTASection } from '../components/CTASection'
-import { SERVICES, WORK, PROCESS, TESTIMONIALS, SALE, formatRand, salePrice } from '../lib/site'
+import { SERVICES, WORK, PROCESS, TESTIMONIALS } from '../lib/site'
 import { buildSrcSet } from '../lib/images'
 
 const serviceIcons = {
@@ -15,13 +15,12 @@ const serviceIcons = {
 }
 
 const tickerItems = [
-  'Cloudflare hosting',
+  'New websites',
+  'Website rebuilds',
+  'Website hosting',
   'Local support',
-  'Free SSL',
-  'Global edge',
-  'Once-off builds',
-  'R300/mo hosting',
-  'Debut sale · 50% off',
+  'Works on phones',
+  'South African business',
 ]
 
 export function HomePage() {
@@ -41,32 +40,22 @@ export function HomePage() {
         <div className="shell">
           <div className="grid items-start gap-12 lg:grid-cols-[0.9fr_1.1fr]">
             <div className="max-w-[620px]">
-              <p className="mono-label mb-5 text-orange-deep">(03) Services &amp; pricing</p>
               <h2 className="display text-ink text-[clamp(2.5rem,5vw,4.4rem)]">
-                Built once. Hosted monthly.
+                Websites and hosting, made simple.
               </h2>
               <p className="mt-6 text-lg leading-relaxed text-ink/75">
-                Four clear services: a new website, a rebuild of the one you have, a non-profit rate
-                and hosting-only. Builds are paid once-off; hosting is R300 a month.
+                We make new websites, rebuild old ones, look after non-profit sites and host
+                websites that are already live. No confusing packages, just the service you need.
               </p>
 
               <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                 <Link to="/services" className="btn btn-dark">
-                  See services <span aria-hidden="true">↗</span>
+                  See our services <span aria-hidden="true">↗</span>
                 </Link>
                 <Link to="/pricing" className="btn btn-outline bg-cream">
-                  See pricing
+                  See prices
                 </Link>
               </div>
-
-              <Link
-                to="/pricing"
-                className="mt-8 flex flex-col gap-1 border-2 border-ink bg-orange p-4 shadow-hard transition-transform duration-200 hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-hard-sm"
-              >
-                <span className="mono-label text-ink/85">{SALE.eyebrow}</span>
-                <span className="display text-xl text-ink">{SALE.headline}</span>
-                <span className="font-mono text-xs text-ink/85">First come, first served ↗</span>
-              </Link>
             </div>
 
             <div className="grid gap-5 sm:grid-cols-2">
@@ -83,18 +72,6 @@ export function HomePage() {
                     </span>
                     <h3 className="display mt-5 text-2xl text-ink">{service.title}</h3>
                     <p className="mt-3 text-sm leading-relaxed text-ink/70">{service.body}</p>
-
-                    <div className="mt-auto flex flex-wrap items-baseline gap-x-2 gap-y-1 pt-5">
-                      <span className="display text-2xl text-ink">
-                        {formatRand(salePrice(service.price))}
-                      </span>
-                      <span className="font-mono text-xs text-ink/60 line-through">
-                        {formatRand(service.price)}
-                      </span>
-                      <span className="mono-label text-ink/60">
-                        {service.billing === 'monthly' ? '/ month' : 'once-off'}
-                      </span>
-                    </div>
                   </article>
                 )
               })}
@@ -107,13 +84,11 @@ export function HomePage() {
         <div className="shell">
           <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
             <div className="max-w-[760px]">
-              <p className="mono-label mb-5 text-orange-deep">(04) Work</p>
               <h2 className="display text-ink text-[clamp(2.5rem,5.2vw,4.6rem)]">
-                Recent South African builds.
+                Recent websites.
               </h2>
               <p className="mt-6 text-lg leading-relaxed text-ink/75">
-                Bold, fast websites for architects, emergency responders and production crews — all
-                hosted on modern infrastructure.
+                A few real websites we have made for South African businesses.
               </p>
             </div>
             <Link to="/work" className="btn btn-outline bg-cream">
@@ -160,12 +135,11 @@ export function HomePage() {
       <section className="section bg-cream">
         <div className="shell grid items-center gap-12 lg:grid-cols-[0.9fr_1.1fr]">
           <div>
-            <p className="mono-label mb-5 text-orange-deep">(05) Process</p>
             <h2 className="display text-ink text-[clamp(2.4rem,4.8vw,4.2rem)]">
-              From idea to live site.
+              From first chat to live website.
             </h2>
             <p className="mt-6 text-lg leading-relaxed text-ink/75">
-              A calm, four-stage process that keeps clients close without slowing delivery.
+              A simple four-step process. You always know what happens next.
             </p>
           </div>
 
@@ -183,8 +157,10 @@ export function HomePage() {
 
       <section className="section bg-ink">
         <div className="shell max-w-[1000px] text-center">
-          <p className="mono-label mb-5 text-orange">What clients say.</p>
-          <div className="mx-auto max-w-[880px] space-y-10 text-left">
+          <h2 className="display text-cream text-[clamp(2.4rem,5vw,4rem)]">
+            What our clients say.
+          </h2>
+          <div className="mx-auto mt-12 max-w-[880px] space-y-10 text-left">
             {TESTIMONIALS.map((item) => (
               <blockquote key={item.name} className="border-b-2 border-cream/20 pb-8 last:border-0 last:pb-0">
                 <p className="font-display text-2xl leading-snug text-cream sm:text-3xl">

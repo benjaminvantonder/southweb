@@ -1,7 +1,7 @@
 import { House } from 'lucide-react'
 import { Link, NavLink } from 'react-router-dom'
 import { cn } from '../lib/cn'
-import { SITE, NAV_LINKS, SALE } from '../lib/site'
+import { SITE, NAV_LINKS } from '../lib/site'
 
 const footerLinkClass = ({ isActive }: { isActive: boolean }) =>
   cn(
@@ -34,18 +34,9 @@ export function Footer() {
             </span>
           </Link>
           <p className="mt-5 max-w-[40ch] text-sm leading-relaxed text-cream/70">
-            Websites built, rebuilt and hosted for South African businesses that want fast delivery
-            without losing local support. Based in Centurion, Gauteng and working across South
-            Africa.
+            Southweb makes new websites, rebuilds old ones and hosts websites for South African
+            businesses. Based in Centurion, working across South Africa.
           </p>
-
-          <Link
-            to="/pricing"
-            className="mt-6 inline-flex flex-col gap-1 border-2 border-cream/25 px-4 py-3 transition-colors hover:border-lime"
-          >
-            <span className="mono-label text-lime">{SALE.eyebrow}</span>
-            <span className="text-sm text-cream">{SALE.short} ↗</span>
-          </Link>
         </div>
 
         <nav aria-label="Footer navigation">
@@ -112,7 +103,7 @@ export function Footer() {
       <div className="border-t border-cream/15">
         <div className="shell flex flex-col gap-3 py-6 text-xs text-cream/60 sm:flex-row sm:items-center sm:justify-between">
           <p>© {new Date().getFullYear()} {SITE.name}. All rights reserved.</p>
-          <p>Cloudflare-powered hosting · Based in Centurion, serving South Africa.</p>
+          <p>Based in Centurion, serving South Africa.</p>
         </div>
       </div>
     </footer>

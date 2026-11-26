@@ -1,6 +1,6 @@
 # Southweb
 
-Cloudflare-powered web hosting, design and care for South African business.
+Website design, rebuilds and hosting for South African businesses.
 
 ## Stack
 
@@ -27,6 +27,7 @@ npm run lint
 - `/` — Home: hero, ribbons, why, services preview, work preview, process preview, testimonials, CTA
 - `/work` — Work
 - `/services` — Services
+- `/pricing` — Pricing
 - `/process` — Process
 - `/faq` — FAQ
 - `/contact` — Contact
@@ -44,9 +45,7 @@ src/
     Hero.tsx
     PageHero.tsx
     Ribbon.tsx
-    RotatingBadge.tsx
     Starburst.tsx
-    Sticker.tsx
     WhySection.tsx
   hooks/
     useLenis.ts
@@ -54,12 +53,15 @@ src/
   lib/
     cn.ts
     gsap.ts
+    images.ts
+    seo.ts
     site.ts
   pages/
     ContactPage.tsx
     FaqPage.tsx
     HomePage.tsx
     NotFoundPage.tsx
+    PricingPage.tsx
     ProcessPage.tsx
     ServicesPage.tsx
     WorkPage.tsx
@@ -70,17 +72,14 @@ src/
 
 ## Production note
 
-Cloudflare Pages should use the SPA fallback defined in `public/_redirects`:
-
-```text
-/* /index.html 200
-```
+Every route is prerendered to static HTML at build time. The host serves each
+route from its own `index.html` and uses `dist/404.html` for unknown paths.
 
 ## Design notes
 
-- Neo-brutalist tokens: ink borders, hard shadows, rounded pills, rotated stickers.
+- Neo-brutalist tokens: ink borders, hard shadows, rounded pills.
 - Cream, lime, orange, forest, pink, blue, yellow palette.
 - Fluid display type with Anton + Instrument Serif italic.
-- GSAP masked headline, sticker floats/parallax, scroll word reveal, marquee.
+- GSAP masked headline, scroll word reveal, marquee.
 - Lenis smooth scroll and ScrollTrigger sync.
 - Reduced-motion fallbacks and custom cursor.

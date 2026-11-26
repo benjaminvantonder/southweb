@@ -6,12 +6,10 @@ export function ProcessPage() {
   return (
     <>
       <PageHero
-        eyebrow="(05) Process"
-        title="From first idea to live website."
-        lede="A four-stage process that keeps scope, price and timeline clear from the first call to launch day."
+        title="How it works."
+        lede="Four simple steps from the first chat to a live website. You always know the price and what happens next."
         image="/images/team.jpg"
-        imageAlt="Team collaborating on a website build"
-        imageCaption="Staging and build phase"
+        imageAlt="Team working together on a website"
       />
 
       <section className="section relative z-10 bg-cream">
@@ -31,13 +29,12 @@ export function ProcessPage() {
       </section>
 
       <CTASection
-        eyebrow="(06) Next step"
         title="Ready to move forward?"
-        lede="Book a working call or send your current setup and goal. We’ll map the next stage."
+        lede="Book a call or send us a message. We will explain the next step in plain language."
         primaryTo="/contact"
         primaryLabel="Book a call"
         secondaryTo="/faq"
-        secondaryLabel="Read FAQ"
+        secondaryLabel="Read the FAQ"
       />
     </>
   )

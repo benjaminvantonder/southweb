@@ -1,6 +1,6 @@
 export const SITE = {
   name: 'Southweb',
-  tagline: 'Web design, rebuilds and Cloudflare hosting for South African business',
+  tagline: 'Websites and hosting for South African businesses',
   email: 'info@southweb.co.za',
   phone: '+27 76 639 5871',
   phoneHref: 'tel:+27766395871',
@@ -35,47 +35,61 @@ export type Service = {
 export const SERVICES: Service[] = [
   {
     id: 'build',
-    title: 'Fully built website',
+    title: 'New website',
     price: 4000,
     billing: 'once-off',
-    bestFor: 'A business that needs a brand-new website.',
-    body: 'A complete website designed and built from scratch, from the first layout to a launch-ready site on Cloudflare.',
-    bullets: ['Custom design', 'Multi-page structure', 'Mobile-first build', 'Launch-ready'],
+    bestFor: 'A business that needs a new website.',
+    body: 'A complete website made for your business, from the first design to the day it goes live.',
+    bullets: [
+      'Designed for your business',
+      'The pages we agree on',
+      'Works on phones and computers',
+      'Ready to go live',
+    ],
   },
   {
     id: 'rebuild',
-    title: 'Website rebuild (from existing)',
+    title: 'Website rebuild',
     price: 3500,
     billing: 'once-off',
-    bestFor: 'An existing site that looks dated or is slow.',
-    body: 'We take your current website and rebuild it with a modern look, faster pages and a cleaner structure, keeping the content that still works.',
-    bullets: ['Modern redesign', 'Existing content reused', 'Faster pages', 'Same domain'],
+    bestFor: 'A website that looks old or loads slowly.',
+    body: 'We take your current website, give it a fresh look and make it faster, keeping the content that still works.',
+    bullets: ['Fresh new look', 'Keep your content', 'Loads faster', 'Keep your web address'],
   },
   {
     id: 'nonprofit',
-    title: 'Non-profit websites',
+    title: 'Non-profit website',
     price: 2000,
     billing: 'once-off',
-    bestFor: 'Registered non-profits and community organisations.',
-    body: 'A complete website for non-profits and community organisations, at a price that respects a tight budget.',
-    bullets: ['Full website build', 'Community-focused layout', 'Donation details', 'Easy to update'],
+    bestFor: 'Registered non-profits and community groups.',
+    body: 'A complete website for non-profits and community groups, at a price that suits a tight budget.',
+    bullets: [
+      'Complete website',
+      'Made for your community',
+      'Donation details',
+      'Easy to update',
+    ],
   },
   {
     id: 'hosting',
-    title: 'Website hosting only',
+    title: 'Website hosting',
     price: 300,
     billing: 'monthly',
-    bestFor: 'A site you already have that needs a reliable host.',
-    body: 'Hosting for a website you already own. We put it on Cloudflare, keep SSL and caching handled, and stay available when something needs attention.',
-    bullets: ['Cloudflare global edge', 'SSL included', 'Caching and delivery', 'Local support'],
+    bestFor: 'A website you already have that needs a reliable home.',
+    body: 'Hosting keeps your website online. We look after it, keep it secure, keep it fast and are here when something goes wrong.',
+    bullets: [
+      'Keeps your site online',
+      'Secure padlock included',
+      'Loads fast for visitors',
+      'Local help when needed',
+    ],
   },
 ]
 
 export const SALE = {
-  eyebrow: 'Debut sale',
   headline: 'First 10 clients get 50% off.',
-  detail: 'First come, first served. The first 10 customers get half price on every service, builds and hosting included.',
-  short: 'First 10 clients · 50% off',
+  detail:
+    'First come, first served. The first 10 customers get half price on every service, websites and hosting included.',
 }
 
 export function formatRand(amount: number) {
@@ -173,23 +187,23 @@ export type ProcessStep = {
 export const PROCESS: ProcessStep[] = [
   {
     number: '01',
-    title: 'Discover',
-    body: 'We talk through the business, the goal and the pages you need. You get a clear scope, price and timeline before anything starts.',
+    title: 'Talk',
+    body: 'We talk about your business, what you need and the pages you want. You get a clear price and timeline before anything starts.',
   },
   {
     number: '02',
     title: 'Design',
-    body: 'Layout, type and colour direction for the pages in scope. You approve the design early, before the build begins.',
+    body: 'We show you how the website will look. You approve the design before we start making it.',
   },
   {
     number: '03',
     title: 'Build',
-    body: 'We build the approved design as a fast, mobile-first website, then show it to you on a staging link for feedback.',
+    body: 'We make the website and show it to you on a private link so you can ask for changes.',
   },
   {
     number: '04',
     title: 'Launch and care',
-    body: 'The site goes live on Cloudflare hosting. Builds are paid once-off; hosting continues monthly for as long as you need it.',
+    body: 'Your website goes live. We keep it online and are here if you need us.',
   },
 ]
 
@@ -200,38 +214,42 @@ export type Faq = {
 
 export const FAQS: Faq[] = [
   {
-    question: 'What services does Southweb offer?',
+    question: 'What does Southweb do?',
     answer:
-      'Four: a fully built website (R4 000), a website rebuild from your existing site (R3 500), non-profit websites (R2 000) and website hosting only (R300 per month).',
+      'We make new websites, rebuild old ones, make websites for non-profits and host websites. We work with businesses and organisations across South Africa.',
   },
   {
     question: 'How does payment work?',
     answer:
-      'Website builds are once-off payments. Hosting is billed monthly and is separate from the build price, whether you take hosting with us or keep your current host.',
+      'The pricing page explains what you pay once and what is monthly. If anything is unclear, ask us and we will walk you through it.',
   },
   {
-    question: 'What is the debut sale?',
-    answer:
-      'Our first 10 customers get 50% off every service. It is first come, first served, and the offer closes once those 10 slots are taken.',
+    question: 'Do you have any special offers?',
+    answer: 'Yes. See the pricing page for current prices and offers.',
   },
   {
-    question: 'What is included in a fully built website?',
+    question: 'What is included in a new website?',
     answer:
-      'A custom design, a mobile-first build across the pages in scope, and launch onto Cloudflare hosting. Scope and timeline are agreed upfront so there are no surprises.',
+      'A design made for your business, the pages we agree on, and a website that works on phones and computers. We agree the price and timeline before we start.',
   },
   {
     question: 'I already have a website. Do I need a rebuild?',
     answer:
-      'If the site works but looks dated, loads slowly or is hard to update, a rebuild is usually the better fit. We reuse the content that still works and give it a modern look, on the same domain.',
+      'If your site looks old, loads slowly or is hard to update, a rebuild is usually the best choice. We keep the content that still works and give it a fresh look. You keep your web address.',
   },
   {
-    question: 'Can you host a site you did not build?',
+    question: 'Can you host a website you did not make?',
     answer:
-      'Yes. Website hosting only is R300 per month. Send us the site address and we will confirm it is a good fit for Cloudflare hosting before you commit.',
+      'Yes. We can host a website you already have. Send us the address and we will check that we can look after it.',
+  },
+  {
+    question: 'How fast will my website be?',
+    answer:
+      'Most Southweb pages load in under a second for visitors in South Africa. We also aim to keep your website online 99.9% of the time.',
   },
   {
     question: 'How do I get started?',
     answer:
-      'Use the contact form, email info@southweb.co.za or call +27 76 639 5871. Tell us which service you need and we will reply with the next step.',
+      'Use the contact form, email info@southweb.co.za or call +27 76 639 5871. Tell us what you need and we will reply with the next step.',
   },
 ]

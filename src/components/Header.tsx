@@ -69,8 +69,6 @@ export function Header() {
               <House className="size-3.5 text-ink" strokeWidth={2.4} />
             </span>
           </Link>
-
-          <span className="mono-label hidden text-ink/70 lg:inline">Local web hosting</span>
         </div>
 
         <nav
@@ -94,17 +92,11 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-2 sm:gap-3">
-          <span className="mono-label hidden text-ink/70 xl:inline">
-            Local <span className="text-orange-deep">/</span> Fast{' '}
-            <span className="text-orange-deep">/</span> Human
-          </span>
-
           <Link
             to="/contact"
             className="btn btn-pink min-h-11 px-3 text-[0.6rem] sm:px-4 sm:text-[0.65rem]"
           >
-            <span className="sm:hidden max-[359px]:hidden">Let&rsquo;s talk</span>
-            <span className="hidden sm:inline">Let&rsquo;s talk hosting</span>
+            Let&rsquo;s talk
             <ArrowUpRight className="size-4" strokeWidth={2.4} aria-hidden="true" />
           </Link>
 
@@ -176,24 +168,13 @@ export function Header() {
           </ul>
 
           <div className="mt-10 flex flex-col gap-2">
-            <span className="mono-label text-forest/60">Say hello</span>
             <a
               href={`mailto:${SITE.email}`}
               className="font-display text-xl break-all text-forest underline decoration-2 underline-offset-4"
             >
               {SITE.email}
             </a>
-            <p className="mono-label mt-3 text-forest/60">
-              Centurion · South Africa · 24/7 support
-            </p>
-            <Link
-              to="/pricing"
-              onClick={() => setOpen(false)}
-              className="mt-3 inline-flex w-fit items-center gap-3 border-2 border-ink bg-orange px-4 py-3 shadow-hard-sm"
-            >
-              <span className="mono-label text-ink/70">Debut sale</span>
-              <span className="font-display text-lg leading-none text-ink">50% off</span>
-            </Link>
+            <p className="mono-label mt-3 text-forest/60">Centurion · South Africa</p>
           </div>
         </nav>
       </div>

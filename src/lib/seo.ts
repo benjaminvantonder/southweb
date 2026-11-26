@@ -22,15 +22,15 @@ export type RouteSeo = {
 
 const DEFAULT_IMAGE = '/images/og-southweb.jpg'
 const DEFAULT_IMAGE_ALT =
-  'Southweb — websites built, rebuilt and hosted for South African business'
+  'Southweb — websites built and hosted for South African businesses'
 
 export const SEO_ROUTES: Record<string, RouteSeo> = {
   '/': {
     path: '/',
     label: 'Home',
-    title: 'Web Design & Cloudflare Hosting in South Africa | Southweb',
+    title: 'Web Design & Website Hosting in South Africa | Southweb',
     description:
-      'Southweb builds, rebuilds and hosts fast websites for South African businesses. Builds from R4 000, Cloudflare hosting R300/month. First 10 clients get 50% off.',
+      'Southweb makes new websites, rebuilds old ones and hosts websites for South African businesses. Based in Centurion, with clear pricing and local support.',
     image: DEFAULT_IMAGE,
     imageWidth: 1200,
     imageHeight: 630,
@@ -41,13 +41,13 @@ export const SEO_ROUTES: Record<string, RouteSeo> = {
   '/services': {
     path: '/services',
     label: 'Services',
-    title: 'Website Design, Rebuilds & Hosting Services | Southweb',
+    title: 'Website Design, Rebuilds & Hosting | Southweb',
     description:
-      'Four clear services: a fully built website, a rebuild of your existing site, non-profit websites and Cloudflare hosting. Once-off builds, monthly hosting, local support.',
+      'New websites, website rebuilds, non-profit websites and website hosting for South African businesses. Simple services, clear prices and local support.',
     image: DEFAULT_IMAGE,
     imageWidth: 1200,
     imageHeight: 630,
-    imageAlt: 'Southweb website design, rebuild and Cloudflare hosting services',
+    imageAlt: 'Southweb website design, rebuild and hosting services',
     priority: 0.9,
     changeFrequency: 'monthly',
   },
@@ -56,11 +56,11 @@ export const SEO_ROUTES: Record<string, RouteSeo> = {
     label: 'Pricing',
     title: 'Website Pricing in South Africa | Southweb',
     description:
-      'See Southweb’s website pricing in rand: fully built R4 000, rebuild R3 500, non-profit R2 000 and hosting R300/month. First 10 clients get 50% off.',
+      'Southweb website prices in rand: new website R4 000, rebuild R3 500, non-profit R2 000 and hosting R300/month. First 10 clients get 50% off.',
     image: DEFAULT_IMAGE,
     imageWidth: 1200,
     imageHeight: 630,
-    imageAlt: 'Southweb website pricing: builds from R2 000 and hosting from R150 per month during the debut sale',
+    imageAlt: 'Southweb website pricing for new websites, rebuilds and hosting',
     priority: 0.9,
     changeFrequency: 'weekly',
   },
@@ -69,11 +69,11 @@ export const SEO_ROUTES: Record<string, RouteSeo> = {
     label: 'Work',
     title: 'Website Portfolio: South African Client Work | Southweb',
     description:
-      'Real South African websites built by Southweb for architecture, emergency services and production clients — hosted on Cloudflare with local support.',
+      'Real South African websites made by Southweb for architecture, emergency services and production clients. See the work and visit the live sites.',
     image: '/images/work-certsa.jpg',
     imageWidth: 1280,
     imageHeight: 800,
-    imageAlt: 'CERT-SA website built by Southweb for a Centurion emergency response organisation',
+    imageAlt: 'CERT-SA website made by Southweb for a Centurion emergency response organisation',
     priority: 0.8,
     changeFrequency: 'monthly',
     webPageType: 'CollectionPage',
@@ -83,11 +83,11 @@ export const SEO_ROUTES: Record<string, RouteSeo> = {
     label: 'Process',
     title: 'Our Website Design & Launch Process | Southweb',
     description:
-      'How Southweb works: discover, design, build, then launch and care. Clear scope, price and timeline before work starts, with hosting handled monthly.',
+      'How Southweb works: talk, design, build, then launch and care. You get a clear price and timeline before work starts, and hosting is handled monthly.',
     image: DEFAULT_IMAGE,
     imageWidth: 1200,
     imageHeight: 630,
-    imageAlt: 'Southweb’s four-stage website design and launch process',
+    imageAlt: 'Southweb’s four-step website design and launch process',
     priority: 0.7,
     changeFrequency: 'monthly',
   },
@@ -96,7 +96,7 @@ export const SEO_ROUTES: Record<string, RouteSeo> = {
     label: 'FAQ',
     title: 'Website Design, Pricing & Hosting FAQ | Southweb',
     description:
-      'Answers on Southweb’s website services, pricing, once-off builds, monthly hosting, the debut sale and what happens after launch.',
+      'Plain answers about Southweb’s website services, payment, hosting and what happens after launch. No jargon and no surprises.',
     image: DEFAULT_IMAGE,
     imageWidth: 1200,
     imageHeight: 630,
@@ -109,11 +109,11 @@ export const SEO_ROUTES: Record<string, RouteSeo> = {
     label: 'Contact',
     title: 'Contact Southweb | Web Design in Centurion, Gauteng',
     description:
-      'Contact Southweb in Centurion for a new website, a rebuild or Cloudflare hosting. Call, WhatsApp or email info@southweb.co.za for a clear quote.',
+      'Contact Southweb in Centurion for a new website, a rebuild or hosting. Call, WhatsApp or email info@southweb.co.za for a clear price and timeline.',
     image: DEFAULT_IMAGE,
     imageWidth: 1200,
     imageHeight: 630,
-    imageAlt: 'Contact Southweb for website design and Cloudflare hosting in Centurion',
+    imageAlt: 'Contact Southweb for website design and hosting in Centurion',
     priority: 0.8,
     changeFrequency: 'monthly',
     webPageType: 'ContactPage',
@@ -167,10 +167,9 @@ function organizationSchema(): JsonLd {
     },
     image: absoluteUrl(DEFAULT_IMAGE),
     description:
-      'Southweb is a web design and Cloudflare hosting studio based in Centurion, South Africa. We build, rebuild and host fast websites for South African businesses.',
+      'Southweb is a web design and website hosting studio based in Centurion, South Africa. We make new websites, rebuild old ones and host websites for South African businesses.',
     email: SITE.email,
     telephone: SITE.phone,
-    priceRange: 'R2 000–R4 000',
     currenciesAccepted: 'ZAR',
     address: {
       '@type': 'PostalAddress',
@@ -203,7 +202,6 @@ function organizationSchema(): JsonLd {
         availableLanguage: ['English'],
       },
     ],
-    hasOfferCatalog: { '@id': SERVICES_ID },
   }
 }
 
@@ -215,7 +213,7 @@ function websiteSchema(): JsonLd {
     name: SITE.name,
     alternateName: 'Southweb Web Design & Hosting',
     description:
-      'Websites built, rebuilt and hosted for South African businesses, with Cloudflare hosting and local support from Centurion.',
+      'Websites built and hosted for South African businesses, with local support from Centurion.',
     publisher: { '@id': ORGANIZATION_ID },
     inLanguage: 'en-ZA',
   }
@@ -256,7 +254,7 @@ function offerCatalogSchema(): JsonLd {
 function webPageSchema(seo: RouteSeo): JsonLd {
   const url = absoluteUrl(seo.path)
   const isHome = seo.path === '/'
-  const isServices = seo.path === '/services' || seo.path === '/pricing'
+  const isPricing = seo.path === '/pricing'
 
   return {
     '@type': seo.webPageType ?? 'WebPage',
@@ -272,7 +270,7 @@ function webPageSchema(seo: RouteSeo): JsonLd {
       url: absoluteUrl(seo.image),
     },
     ...(isHome ? {} : { breadcrumb: { '@id': `${url}#breadcrumb` } }),
-    ...(isServices ? { mainEntity: { '@id': SERVICES_ID } } : {}),
+    ...(isPricing ? { mainEntity: { '@id': SERVICES_ID } } : {}),
     ...(seo.path === '/work' ? { mainEntity: { '@id': `${url}#portfolio` } } : {}),
     ...(seo.path === '/faq' ? { mainEntity: { '@id': `${url}#faq` } } : {}),
     ...(seo.path === '/process' ? { mainEntity: { '@id': `${url}#howto` } } : {}),
@@ -322,7 +320,7 @@ function howToSchema(): JsonLd {
     '@id': `${absoluteUrl('/process')}#howto`,
     name: 'How Southweb designs and launches a website',
     description:
-      'Southweb’s four-stage website process: discover, design, build, then launch and care.',
+      'Southweb’s four-step website process: talk, design, build, then launch and care.',
     step: PROCESS.map((step, index) => ({
       '@type': 'HowToStep',
       position: index + 1,
@@ -354,13 +352,9 @@ function workCollectionSchema(): JsonLd {
 }
 
 export function buildStructuredData(seo: RouteSeo): JsonLd {
-  const graph: JsonLd[] = [
-    organizationSchema(),
-    websiteSchema(),
-    webPageSchema(seo),
-    offerCatalogSchema(),
-  ]
+  const graph: JsonLd[] = [organizationSchema(), websiteSchema(), webPageSchema(seo)]
 
+  if (seo.path === '/pricing') graph.push(offerCatalogSchema())
   if (seo.path !== '/' && !seo.noindex) graph.push(breadcrumbSchema(seo))
   if (seo.path === '/faq') graph.push(faqSchema())
   if (seo.path === '/process') graph.push(howToSchema())

@@ -7,20 +7,17 @@ export function FaqPage() {
   return (
     <>
       <PageHero
-        eyebrow="(06) FAQ"
-        title="Website questions, answered plainly."
-        lede="What we build, what it costs, how the debut sale works and what hosting includes — straight answers before you commit."
+        title="Questions and answers."
+        lede="Plain answers about our services, payment, hosting and what happens after launch."
         image="/images/faq-support.jpg"
         imageAlt="Help desk supporting a website owner with hosting questions"
-        imageCaption="Pricing and hosting questions"
       />
 
       <FaqSection faqs={FAQS} />
 
       <CTASection
-        eyebrow="(07) Still deciding"
-        title="Ask us anything directly."
-        lede="Email, call or WhatsApp — a real human from the Southweb team will reply, usually within the hour during office hours."
+        title="Still have a question?"
+        lede="Email, call or WhatsApp. A real person from Southweb will reply, usually within an hour during office hours."
         primaryTo="/contact"
         primaryLabel="Contact us"
         secondaryTo="/"

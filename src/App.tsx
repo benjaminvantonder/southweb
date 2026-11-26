@@ -11,7 +11,6 @@ import { WorkPage } from './pages/WorkPage'
 import { Cursor } from './components/Cursor'
 import { Footer } from './components/Footer'
 import { Header } from './components/Header'
-import { SaleBadge } from './components/SaleBadge'
 import { SeoHead } from './components/SeoHead'
 import { useLenis } from './hooks/useLenis'
 import { ScrollTrigger } from './lib/gsap'
@@ -72,7 +71,6 @@ function App() {
       </main>
 
       <Footer />
-      <SaleBadge />
     </div>
   )
 }

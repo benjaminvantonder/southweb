@@ -1,5 +1,5 @@
 # Southweb is a static, prerendered site. Allow crawlers everywhere except
-# Cloudflare's internal endpoints, and point them at the XML sitemap.
+# internal platform paths, and point them at the XML sitemap.
 User-agent: *
 Allow: /
 Disallow: /cdn-cgi/

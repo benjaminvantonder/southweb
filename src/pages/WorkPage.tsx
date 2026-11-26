@@ -7,12 +7,10 @@ export function WorkPage() {
   return (
     <>
       <PageHero
-        eyebrow="(04) Work"
-        title="Recent builds for South African teams."
-        lede="Architecture, emergency services and sound, light and vision — three real client builds, each paired with Cloudflare-powered hosting and local support."
+        title="Websites we have made."
+        lede="A few real websites for South African businesses, from architecture to emergency services and live production."
         image="/images/studio.jpg"
-        imageAlt="Workspace used for website design and build work"
-        imageCaption="Design · Build context"
+        imageAlt="Workspace used for website design work"
       />
 
       <section className="section relative z-10 bg-cream">
@@ -52,9 +50,8 @@ export function WorkPage() {
       </section>
 
       <CTASection
-        eyebrow="(05) Next build"
         title="Have a project like these?"
-        lede="Tell us about the business, the goal and the launch date. We’ll scope a Cloudflare-hosted build with local care."
+        lede="Tell us about your business and what you need. We will tell you how we can help."
         primaryTo="/contact"
         primaryLabel="Start the project"
         secondaryTo="/services"

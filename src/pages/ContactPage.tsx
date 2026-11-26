@@ -45,19 +45,16 @@ export function ContactPage() {
   return (
     <>
       <PageHero
-        eyebrow="(07) Contact"
-        title="Let’s build your next website."
-        lede="Tell us which of the four services fits, plus the business and the goal. Southweb will reply with clear scope, price and timeline."
+        title="Let’s talk about your website."
+        lede="Tell us what you need and we will reply with a clear price and timeline. No jargon, no pressure."
         image="/images/contact-handshake.jpg"
         imageAlt="Client and web developer agreeing on a new website project"
-        imageCaption="Centurion · South Africa"
       />
 
       <section className="section relative z-10 bg-cream">
         <div className="shell grid gap-12 lg:grid-cols-[0.9fr_1.1fr]">
           <div className="grid min-w-0 gap-6">
             <div className="border-2 border-ink bg-[#faf7ef] p-6 shadow-hard sm:p-7">
-              <p className="mono-label mb-4 text-orange-deep">Get in touch</p>
               <h2 className="display text-3xl text-ink">Start the conversation.</h2>
               <ul className="mt-6 grid gap-4 text-sm">
                 <li>
@@ -83,9 +80,11 @@ export function ContactPage() {
             </div>
 
             <div className="border-2 border-ink bg-ink p-6 text-cream shadow-hard sm:p-7">
-              <p className="mono-label mb-4 text-lime">Support hours</p>
-              <p className="text-lg">Mon–Fri, 08:00–17:00 SAST</p>
-              <p className="mt-3 text-sm text-cream/70">Critical site issues: 24/7 human response.</p>
+              <h2 className="font-display text-2xl text-cream">Support hours</h2>
+              <p className="mt-3 text-lg">Mon–Fri, 08:00–17:00 (South African time)</p>
+              <p className="mt-3 text-sm text-cream/70">
+                If your website goes down, we respond any time.
+              </p>
               <a
                 href="https://www.google.com/maps/search/?api=1&query=17+Van+Riebeeck+Avenue+Centurion"
                 target="_blank"
@@ -170,9 +169,8 @@ export function ContactPage() {
       </section>
 
       <CTASection
-        eyebrow="(08) Or call first"
         title="Prefer to talk it through?"
-        lede="Call or WhatsApp the Southweb team directly — quick, human, and usually faster than a form for small businesses."
+        lede="Call or WhatsApp us directly. It is often faster than a form for a small business."
         primaryTo="/contact"
         primaryLabel="Call or WhatsApp"
         secondaryTo="/"
